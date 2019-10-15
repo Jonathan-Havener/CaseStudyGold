@@ -11,6 +11,11 @@ public class JDBCConnectionClass {
     static String url = "jdbc:oracle:thin:@localhost:1521:xe";
     static String uname = "system";
     static String pwd = "12345";
+	static Connection con = null;
+	static PreparedStatement pst = null;
+	static ResultSet rs = null;
+static String role="";
+	static String userpassword="";
 	
 	
 	static boolean createOpperator(Operator o) throws SQLException, ClassNotFoundException
@@ -149,5 +154,58 @@ public class JDBCConnectionClass {
 	    }
 		
 		return operators;
+	}
+public static boolean selectUsers(String username,String password) throws SQLException, ClassNotFoundException
+	{
+		
+	    String query = "select * from login1 where userid=? and password=?";
+	    Class.forName(driverinfo);
+	    System.out.println("driver registered successfully");
+
+	    con = DriverManager.getConnection(url, uname, pwd);
+	    System.out.println("connection established successfully");
+
+	    pst = con.prepareStatement(query);
+	    pst.setString(1, username);
+	    pst.setString(2, password);
+	    rs = pst.executeQuery();
+	  
+	    if(rs.next())
+	    {
+	        //System.out.println(rs.getString(1)+"-------"+rs.getString(2));
+	    	userpassword=rs.getString(2);
+	    	role=rs.getString(3);
+	        return true;
+	    }
+	    
+	        rs.close();
+	 	    pst.close();
+	 	    con.close();
+	 	    return false;
+	}
+	public static boolean ChangePassword(String username,String password) throws SQLException, ClassNotFoundException
+	{
+		
+	    String query = "update login1 set password=? where userid=?";
+	    Class.forName(driverinfo);
+	    System.out.println("driver registered successfully");
+
+	    con = DriverManager.getConnection(url, uname, pwd);
+	    System.out.println("connection established successfully");
+
+	    pst = con.prepareStatement(query);
+	    pst.setString(1,password );
+	    pst.setString(2, username);
+	    int i= pst.executeUpdate();
+	  
+	    if(i>0)
+	    {
+	        return true;
+	    }
+	    
+	        rs.close();
+	 	    pst.close();
+	 	    con.close();
+	 	    return false;
 	}
 }

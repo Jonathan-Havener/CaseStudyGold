@@ -121,5 +121,15 @@ public class Logic {
 		}
 
 	}
+static boolean validateUser(String uname,String password) throws ClassNotFoundException, SQLException
+	{
+		boolean b=JDBCConnectionClass.selectUsers(uname, password);
+		return b;
+	}
+	static boolean ChangePassword(String uname,String password) throws ClassNotFoundException, SQLException
+	{
+		boolean b=JDBCConnectionClass.ChangePassword(uname, password);
+		return b;
+	}
 	
 }
