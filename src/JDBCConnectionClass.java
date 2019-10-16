@@ -24,17 +24,18 @@ public class JDBCConnectionClass {
 		Class.forName(driverinfo);
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
-	    String query = "Insert into operator values(?,?,?,?,?,?,?,?,?)";
+	    String query = "Insert into operator values(?,?,?,?,?,?,?,?,?,?)";
 	    PreparedStatement pst = con.prepareStatement(query);
-	    pst.setString(1, o.getfName());
-	    pst.setString(2, o.getlName());
-	    pst.setString(3, o.getEmail());
-	    pst.setString(4, o.getpNum());
-	    pst.setTimestamp(5, o.getShiftStart());
-	    pst.setTimestamp(6, o.getShiftEnd());
-	    pst.setInt(7, o.getMaxCustomers());
-	    pst.setDate(8, o.getCreationDate());
-	    pst.setInt(9, o.getActiveCustomers());
+	    pst.setInt(1, o.getUniqueId());
+	    pst.setString(2, o.getfName());
+	    pst.setString(3, o.getlName());
+	    pst.setString(4, o.getEmail());
+	    pst.setString(5, o.getpNum());
+	    pst.setTimestamp(6, o.getShiftStart());
+	    pst.setTimestamp(7, o.getShiftEnd());
+	    pst.setInt(8, o.getMaxCustomers());
+	    pst.setDate(9, o.getCreationDate());
+	    pst.setInt(10, o.getActiveCustomers());
 	    
 
 	    try {

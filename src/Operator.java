@@ -2,7 +2,7 @@ import java.sql.Timestamp;
 
 public class Operator {
 	String fName, lName, email,pNum;
-	int  maxCustomers, activeCustomers; 
+	int  maxCustomers, activeCustomers, uniqueId; 
 	Timestamp shiftStart, shiftEnd;
 	java.sql.Date creationDate;
 	
@@ -10,9 +10,10 @@ public class Operator {
 	{
 		
 	}
-	public Operator(String fName, String lName, String email, 
+	public Operator(int uniqueId, String fName, String lName, String email, 
 			String pNum, Timestamp shiftStart, Timestamp shiftEnd, int maxCustomers, java.sql.Date creationDate, int activeCustomers)
 	{
+		this.uniqueId=uniqueId;
 		this.fName=fName;
 		this.lName=lName;
 		this.email=email;
@@ -24,6 +25,14 @@ public class Operator {
 		this.activeCustomers=activeCustomers;
 	}
 	
+	public int getUniqueId()
+	{
+		return uniqueId;
+	}
+	public void setUniqueId(int uniqueId)
+	{
+		this.uniqueId=uniqueId;
+	}
 	public String getfName() {
 		return fName;
 	}
