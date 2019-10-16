@@ -49,34 +49,34 @@ footer{
 </style>
 
 <font color ="white">
-<h1>Hello New Customer, You are ready to register</h1>
+<h1>Hello, You are ready to register a new retailer</h1>
 </font>
 <br><br>
 <center>
 
 <font color ="white">
-<h1>Customer Creation</h1>
+<h1>Retailer Creation</h1>
 </font>
 <div>
 
-<form name="myform" action="MainServlet" method="post"  >
+<form name="myform" method="post" >
 
-<b>First Name</b> <input type = "text" name ="fname"><br><br>
-<b>Last Name</b> <input type = "text" name ="lname"><br><br>
-<b>E-mail ID</b> <input type = "text" name ="email"><br><br>
-<b>Phone Number</b> <input type ="text" name="phone"><br><br>
+<b>Name</b> <input type = "text" name ="name"><br><br>
+<b>Contact 1</b> <input type = "text" name ="contact1"><br><br>
+<b>Contact 2</b> <input type = "text" name ="contact2"><br><br>
 <b>Address Line 1</b> <input type = "text" name ="addr1"><br><br>
 <b>Address Line 2</b> <input type = "text" name ="addr2"><br><br>
-<b>Landmark</b> <input type = "text" name ="landmark"><br><br>
-<b>Zip Code</b> <input type ="number" name="zip"><br><br>
+<b>Zip Code</b> <input type ="text" name="zip"><br><br>
 <b>City</b> <input type = "text" name ="city"><br><br>
 <b>State/Province</b> <input type = "text" name ="state"><br><br>
+<b>Set Top Box Limit</b> <input type="text" name ="settop"> <br><br>
+<b>Credit Limit</b> <input type = "text" name ="creditlimit"><br><br>
+<b>Commission Percentage</b> <input type = "number" name ="comm"><br><br>
+<b>Service charges</b> <input type="text" name ="scharge"> <br><br>
+<b>Inventory List</b> <input type = "text" name ="inventory"><br><br>
 <b>Creation Date</b> <input type="date" name ="cdate"> <br><br>
-<b>Operator Name</b> <input type = "text" name ="opname"><br><br>
-<b>Retailer Name</b> <input type = "text" name ="rename"><br><br>
-<input type="hidden" name="register" value="customer_registration">
 
-<button type="submit" onClick="window.location.href = 'Retailer_Regn.jsp';" >SUBMIT</button>
+<button type="submit" >SUBMIT</button>
 <input type="reset" value="RESET" ><br><br>
 </div>
 </center>

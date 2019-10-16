@@ -52,15 +52,17 @@ footer{
 <br><br>
 <br><br>
 <br><br>
-
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button">
+<form action="MainServlet" method="post">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button"
+onClick="window.location.href = 'Customer_Regn.jsp';">
 <i class ="fa fa-group"></i>
 <br>
 Customer Management
 </button>
 <br><br>
 <br><br>
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button"
+onClick="window.location.href = 'Retailer_Regn.jsp';">
 <i class ="fa fa-handshake-o"></i>
 <br>
 Retailer Management

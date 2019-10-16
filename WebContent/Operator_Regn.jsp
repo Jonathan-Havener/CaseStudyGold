@@ -1,4 +1,4 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 
 <html>
 
@@ -65,8 +65,8 @@ footer{
 <b>First Name</b> <input type = "text" name ="fname"><br><br>
 <b>Last Name</b> <input type = "text" name ="lname"><br><br>
 <b>E-mail ID</b> <input type = "text" name ="email"><br><br>
-<b>Phone Number</b> <input type ="number" name="phone"><br><br>
-<b>Shift Time Start</b> <select>
+<b>Phone Number</b> <input type ="text" name="phone"><br><br>
+<b>Shift Time Start</b> <select name="starttime">
   <option value= " "> </option>
   <option value="8">8 am</option>
   <option value="9">9 am</option>
@@ -75,9 +75,9 @@ footer{
 <b>Shift Time End </b><br><br>
 <b>Max number of Customers</b> <input type="number" name ="maxno"><br><br>
 <b>Creation Date</b> <input type="date" name ="resume"> <br><br>
+<input type="hidden" name="register" value="operatorregn">
 
-
-<button type="submit" >SUBMIT</button>
+<button type="submit"  name="create_btn" >SUBMIT</button>
 <input type="reset" value="RESET" ><br><br>
 </div>
 </center>

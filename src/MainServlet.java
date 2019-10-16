@@ -2,6 +2,10 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,13 +60,13 @@ public class MainServlet extends HttpServlet {
     			else
     			{
     				System.out.println("password does not match");
-    				  out.println("<script type=\"text/javascript\">");
+    			   out.println("<script type=\"text/javascript\">");
    				   out.println("alert('passwords not matching');");
    				   out.println("location='popup-form.jsp';");
    				   out.println("</script>");
     			}
     		}
-    		else if(formtype.equals("login"))
+    		 if(formtype.equals("login"))
     		{
     			boolean result=Logic.validateUser(uname, upwd);
     			if(result)
@@ -92,6 +96,56 @@ public class MainServlet extends HttpServlet {
     				}
     				}
     			}
+    			 if(formtype.equals("operatorcrud"))
+    			{
+    				if (request.getParameter("create_btn") != null) 
+    				{
+    					
+    				}
+    				else if(request.getParameter("view_btn") != null) 
+    				{
+    					
+    				}
+    				else if(request.getParameter("update_btn") != null) 
+    				{
+    					
+    				}
+    				else if(request.getParameter("delete_btn") != null) 
+    				{
+    					
+    				}
+    			}
+    			if(formtype.equals("operatorregn"))
+    			{
+    				System.out.println("operator");
+    				SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss.SSS");
+				    Date parsedDate;
+					try {
+						parsedDate = dateFormat.parse(request.getParameter("starttime"));
+						 Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+						 boolean i=Logic.addOperator(request.getParameter("fname"), request.getParameter("lname"), 
+	    							request.getParameter("email"), request.getParameter("phone"), 
+	    							timestamp,
+	    							Integer.parseInt(request.getParameter("maxnum")));
+						 if(i)
+						 {
+						   out.println("<script type=\"text/javascript\">");
+	    				   out.println("alert('Added Operator');");
+	    				   out.println("</script>");
+						 }
+						 else
+						 {
+						    out.println("<script type=\"text/javascript\">");
+		    				out.println("alert('Please enter valid input');");
+		    				out.println("location='Operator_CRUD.jsp';");
+		    				out.println("</script>");
+						 }
+					 } 
+					catch (ParseException e)
+					{
+						e.printStackTrace();
+					}	
+    			}
     			else
     			{
     				//out.println("Please enter the valid user name and password");
@@ -116,6 +170,7 @@ public class MainServlet extends HttpServlet {
 		}
 
 	}
+	
 	}
 
 

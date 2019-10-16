@@ -46,33 +46,42 @@ footer{
 
 <center>
 
+<font color ="white">
+<h1>OPERATOR CRUD</h1>
+</font>
+
 <div>
 
 <br><br>
-
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button" 
-onClick="window.location.href = 'Customer_Regn.jsp';">
+<form action="MainServlet" method="post">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button" name="create_btn"
+onClick="window.location.href = 'Operator_Regn.jsp';">
 <i class ="fa fa-group"></i>
 <br>
-Customer Management
+Create
 </button>
 <br><br>
 <br><br>
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button"
-onClick="window.location.href = 'Retailer_Regn.jsp';">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button" name="update_btn">
+<i class ="fa fa-repeat"></i>
+<br>
+Update
+</button>
+<br><br>
+<br><br>
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button" name="view_btn">
 <i class ="fa fa-handshake-o"></i>
 <br>
-Retailer Management
+View
 </button>
 <br><br>
 <br><br>
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button"
-onClick="window.location.href = 'Operator_CRUD.jsp';">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button" name="delete_btn">
 <i class ="fa fa-user-circle"></i>
 <br>
-Operator Management
+Delete
 </button>
-
+<input type="hidden" name="register" value="operatorcrud">
 </form>
 </div>
 </center>
