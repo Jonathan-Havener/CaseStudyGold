@@ -14,7 +14,7 @@ public class JDBCConnectionClass {
 	static Connection con = null;
 	static PreparedStatement pst = null;
 	static ResultSet rs = null;
-static String role="";
+	static String role="";
 	static String userpassword="";
 	
 	
@@ -29,7 +29,7 @@ static String role="";
 	    pst.setString(1, o.getfName());
 	    pst.setString(2, o.getlName());
 	    pst.setString(3, o.getEmail());
-	    pst.setInt(4, o.getpNum());
+	    pst.setString(4, o.getpNum());
 	    pst.setTimestamp(5, o.getShiftStart());
 	    pst.setTimestamp(6, o.getShiftEnd());
 	    pst.setInt(7, o.getMaxCustomers());
@@ -60,8 +60,8 @@ static String role="";
 	    String query = "Insert into retailer values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	    PreparedStatement pst = con.prepareStatement(query);
 	    pst.setString(1, retailer.getName());
-	    pst.setInt(2, retailer.getP1());
-	    pst.setInt(3, retailer.getP2());
+	    pst.setString(2, retailer.getP1());
+	    pst.setString(3, retailer.getP2());
 	    pst.setString(4, retailer.getAdd1());
 	    pst.setString(5, retailer.getAdd2());
 	    pst.setInt(6, retailer.getZip());
@@ -106,7 +106,7 @@ static String role="";
 	    pst.setString(1, c.getfName());
 	    pst.setString(2, c.getlName());
 	    pst.setString(3, c.getEmail());
-	    pst.setInt(4, c.getP1());
+	    pst.setString(4, c.getP1());
 	    pst.setString(5, c.getAdd1());
 	    pst.setString(6, c.getAdd2());
 	    pst.setString(7, c.getLandMark());
@@ -146,8 +146,8 @@ static String role="";
 	    while(rs.next())
 	    {
 	    	//define Operator using rs.getString(1) starting at 1
-	    	tempOperator = new Operator(rs.getString("FName"), rs.getString("LName"),
-	    			rs.getString("emailID"), rs.getInt("phone#"), rs.getTimestamp("ShftStrt"),
+	    	tempOperator = new Operator(rs.getInt("OpId"),rs.getString("FName"), rs.getString("LName"),
+	    			rs.getString("emailID"), rs.getString("phone#"), rs.getTimestamp("ShftStrt"),
 	    			rs.getTimestamp("ShftEnd"), rs.getInt("Maximum#ofCustMnged"), rs.getDate("CreationDate"),
 	    			rs.getInt("activeCustomers"));
 	    	operators.add(tempOperator);
@@ -155,15 +155,13 @@ static String role="";
 		
 		return operators;
 	}
-public static boolean selectUsers(String username,String password) throws SQLException, ClassNotFoundException
+	public static boolean selectUsers(String username,String password) throws SQLException, ClassNotFoundException
 	{
 		
-	    String query = "select * from login1 where userid=? and password=?";
+	    String query = "select * from login where userid=? and password=?";
 	    Class.forName(driverinfo);
-	    System.out.println("driver registered successfully");
 
 	    con = DriverManager.getConnection(url, uname, pwd);
-	    System.out.println("connection established successfully");
 
 	    pst = con.prepareStatement(query);
 	    pst.setString(1, username);
@@ -186,7 +184,7 @@ public static boolean selectUsers(String username,String password) throws SQLExc
 	public static boolean ChangePassword(String username,String password) throws SQLException, ClassNotFoundException
 	{
 		
-	    String query = "update login1 set password=? where userid=?";
+	    String query = "update login set password=? where userid=?";
 	    Class.forName(driverinfo);
 	    System.out.println("driver registered successfully");
 

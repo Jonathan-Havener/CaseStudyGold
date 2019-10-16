@@ -1,14 +1,14 @@
 import java.sql.Date;
 
 public class Customer {
-	String fName, lName, email, add1, add2, landMark, city, state, operator, retailer;
-	int p1, zip;
+	String fName, lName, email, add1, add2, landMark, city, state, operator, retailer, p1;
+	int zip, uniqueId;
 	java.sql.Date creationDate;
 	
 	
-	public Customer(String fName, String lName, String email, String add1, String add2, String landMark, 
-			String city, String state, String operator, String retailer, int p1, int zip, Date creationDate) {
-		super();
+	public Customer(int uniqueId, String fName, String lName, String email, String add1, String add2, String landMark, 
+			String city, String state, String operator, String retailer, String p1, int zip, Date creationDate) {
+		this.uniqueId = uniqueId;
 		this.fName = fName;
 		this.lName = lName;
 		this.email = email;
@@ -22,6 +22,12 @@ public class Customer {
 		this.p1 = p1;
 		this.zip = zip;
 		this.creationDate = creationDate;
+	}
+	public int getUniqueId() {
+		return uniqueId;
+	}
+	public void setUniqueId(int uniqueId) {
+		this.uniqueId = uniqueId;
 	}
 	public String getfName() {
 		return fName;
@@ -83,10 +89,10 @@ public class Customer {
 	public void setRetailer(String retailer) {
 		this.retailer = retailer;
 	}
-	public int getP1() {
+	public String getP1() {
 		return p1;
 	}
-	public void setP1(int p1) {
+	public void setP1(String p1) {
 		this.p1 = p1;
 	}
 	public int getZip() {

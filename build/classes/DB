@@ -9,11 +9,10 @@ ShftStrt timestamp(6) ,
 ShftEnd timestamp(6),
 Maximum#ofCustMnged INT not null,
 CreationDate DATE,
-//Added below data
 activeCusomters INT
 )
 
-insert into Operator values (123,'Bryan','Harvey','Bharvey@gmail.com',8132458732,TO_TIMESTAMP('08:00:32','HH:MI:SS'),TO_TIMESTAMP('05:00:45','HH:MI:SS'),13,TO_DATE('09/14/2019','MM/DD/YYYY'));
+insert into Operator values (123,'Bryan','Harvey','Bharvey@gmail.com',8132458732,TO_TIMESTAMP('08:00:32','HH:MI:SS'),TO_TIMESTAMP('05:00:45','HH:MI:SS'),13,TO_DATE('09/14/2019','MM/DD/YYYY'),0);
 insert into Operator values (456,'James','Brown','Jbrown@yahoo.com',3058311232,TO_TIMESTAMP('08:01:31','HH:MI:SS'),TO_TIMESTAMP('06:02:32','HH:MI:SS'),13,TO_DATE('08/19/2018','MM/DD/YYYY'));
 insert into Operator values (789,'Adam','Sandler','Asandler@rr.com',9048759943,TO_TIMESTAMP('09:11:18','HH:MI:SS'),TO_TIMESTAMP('05:01:12','HH:MI:SS'),13,TO_DATE('09/02/2017','MM/DD/YYYY'));
 insert into Operator values (101,'Lebron','James','Ljames@gmail.com',3133346208,TO_TIMESTAMP('08:00:01','HH:MI:SS'),TO_TIMESTAMP('06:00:10','HH:MI:SS'),13,TO_DATE('07/25/2019','MM/DD/YYYY'));
@@ -92,7 +91,7 @@ Password varchar (20),
 Role varchar(20)
 )
 
-
+insert into Login values ('name','password','ADMIN');
 
 
 

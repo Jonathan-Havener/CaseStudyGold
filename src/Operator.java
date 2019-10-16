@@ -1,18 +1,16 @@
 import java.sql.Timestamp;
 
 public class Operator {
-	String fName, lName, email;
-	int pNum, maxCustomers, activeCustomers; 
+	String fName, lName, email, pNum;
+	int maxCustomers, activeCustomers, uniqueId; 
 	Timestamp shiftStart, shiftEnd;
 	java.sql.Date creationDate;
 	
-	public Operator()
+	public Operator(int uniqueId, String fName, String lName, String email, String pNum,
+			Timestamp shiftStart, Timestamp shiftEnd, int maxCustomers, 
+			java.sql.Date creationDate, int activeCustomers)
 	{
-		
-	}
-	public Operator(String fName, String lName, String email, 
-			int pNum, Timestamp shiftStart, Timestamp shiftEnd, int maxCustomers, java.sql.Date creationDate, int activeCustomers)
-	{
+		this.uniqueId=uniqueId;
 		this.fName=fName;
 		this.lName=lName;
 		this.email=email;
@@ -23,7 +21,12 @@ public class Operator {
 		this.creationDate=creationDate;
 		this.activeCustomers=activeCustomers;
 	}
-	
+	public int getUniqueId() {
+		return uniqueId;
+	}
+	public void setUniqueId(int uniqueId) {
+		this.uniqueId = uniqueId;
+	}
 	public String getfName() {
 		return fName;
 	}
@@ -42,10 +45,10 @@ public class Operator {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getpNum() {
+	public String getpNum() {
 		return pNum;
 	}
-	public void setpNum(int pNum) {
+	public void setpNum(String pNum) {
 		this.pNum = pNum;
 	}
 	public Timestamp getShiftStart() {
