@@ -143,7 +143,7 @@ public class MainServlet extends HttpServlet {
 		    				out.println("</script>");
 						 }
     			}
-    		else if(formtype.equals("customer_registration"))
+    	else if(formtype.equals("customer_registration"))
 			{
 				System.out.println("customer");
 					 boolean i=Logic.addCustomer(request.getParameter("fname"), request.getParameter("lname"), 
@@ -172,7 +172,7 @@ public class MainServlet extends HttpServlet {
 	    				out.println("location='Customer_Regn.jsp';");
 	    				out.println("</script>");
 					 }
-			}
+			
     			else
     			{
     				//out.println("Please enter the valid user name and password");
@@ -181,10 +181,63 @@ public class MainServlet extends HttpServlet {
     				   out.println("alert('Username or password incorrect');");
     				   out.println("location='LoginPage-US1.jsp';");
     				   out.println("</script>");
-    				
-    			}
-		
+    				}
+			}
+      else if(formtype.equals("CustomerView")) 
+			{
+				System.out.println("view");
+				request.setAttribute("CustomerList", Logic.findCustomer());
+				getServletContext().getRequestDispatcher("/CustomerView.jsp").forward(request, response);
+				
+			}
+      else if(formtype.equals("Retailer_registration"))
+		{
+			System.out.println("Retailer");
+				 boolean i=Logic.addRetailer(request.getParameter("name"),  
+						 Integer.parseInt(request.getParameter("Contactno1")), Integer.parseInt(request.getParameter("Contactno2")),
+							request.getParameter("addr1"),request.getParameter("addr2"),
+						Integer.parseInt(request.getParameter("zip")),request.getParameter("city"),
+							request.getParameter("state"),Integer.parseInt(request.getParameter("Credit Limit")),
+							Integer.parseInt(request.getParameter("commision percentage")),Integer.parseInt(request.getParameter("Service charges")),
+							Integer.parseInt(request.getParameter("Inventory List")),new Timestamp(0));
+						
+				 if(i)
+				 {
+				   out.println("<script type=\"text/javascript\">");
+				   out.println("alert('Added Retailer');");
+				   if(JDBCConnectionClass.role.equals("admin"))
+					   out.println("location='Admin_Page.jsp';");
+				   else if(JDBCConnectionClass.role.equals("operator"))
+					   out.println("location='Operator_Page.jsp';"); 
+				   out.println("</script>");
+				 }
+				 else
+				 {
+				    out.println("<script type=\"text/javascript\">");
+  				out.println("alert('Please enter valid input');");
+  				out.println("location='Customer_Regn.jsp';");
+  				out.println("</script>");
+				 }
 		}
+		
+			else
+			{
+				//out.println("Please enter the valid user name and password");
+				//response.sendRedirect("LoginPage-US1.html");
+				   out.println("<script type=\"text/javascript\">");
+				   out.println("alert('Username or password incorrect');");
+				   out.println("location='LoginPage-US1.jsp';");
+				   out.println("</script>");
+				}
+    else if(formtype.equals("RetailerView")) 
+			{
+				System.out.println("view");
+				request.setAttribute("RetailerList", Logic.findRetailer());
+				getServletContext().getRequestDispatcher("/RetailerView.jsp").forward(request, response);
+				
+			}
+		}
+		
 		catch(ClassNotFoundException e)
 		{
 			System.out.println("Class not found exception");
