@@ -1,0 +1,190 @@
+create table Operator
+(
+OpID INT null primary key,
+FName varchar(20),
+LName varchar(20),
+emailID varchar(30),
+phone# varchar(20),
+ShftStrt timestamp(6) ,
+ShftEnd timestamp(6),
+Maximum#ofCustMnged INT not null,
+CreationDate DATE,
+ActiveCus INT
+)
+
+insert into Operator values (123,'Bryan','Harvey','Bharvey@gmail.com','8132458732',TO_TIMESTAMP('08:00:32','HH:MI:SS'),TO_TIMESTAMP('05:00:45','HH:MI:SS'),13,TO_DATE('09/14/2019','MM/DD/YYYY'),1);
+insert into Operator values (456,'James','Brown','Jbrown@yahoo.com','3058311232',TO_TIMESTAMP('08:01:31','HH:MI:SS'),TO_TIMESTAMP('06:02:32','HH:MI:SS'),10,TO_DATE('08/19/2018','MM/DD/YYYY'),1);
+insert into Operator values (789,'Adam','Sandler','Asandler@rr.com','9048759943',TO_TIMESTAMP('09:11:18','HH:MI:SS'),TO_TIMESTAMP('05:01:12','HH:MI:SS'),6,TO_DATE('09/02/2017','MM/DD/YYYY'),1);
+insert into Operator values (101,'Lebron','James','Ljames@gmail.com','3133346208',TO_TIMESTAMP('08:00:01','HH:MI:SS'),TO_TIMESTAMP('06:00:10','HH:MI:SS'),8,TO_DATE('07/25/2019','MM/DD/YYYY'),1);
+insert into Operator values (203,'Aaron','Judge','Ajudge@NYyanks.com','2147543895',TO_TIMESTAMP('08:02:04','HH:MI:SS'),TO_TIMESTAMP('04:59:32','HH:MI:SS'),27,TO_DATE('02/20/2017','MM/DD/YYYY'),1);
+insert into Operator values (304,'Srikar','Sucks','Hesucks@life.com','1120942311',TO_TIMESTAMP('12:45:56','HH:MI:SS'),TO_TIMESTAMP('02:45:09','HH:MI:SS'),50,TO_DATE('10/15/2018','MM/DD/YYYY'),1);
+insert into Operator values (405,'Kumar','Harold','KH@whitecastle.com','9052130900',TO_TIMESTAMP('10:00:32','HH:MI:SS'),TO_TIMESTAMP('05:15:07','HH:MI:SS'),17,TO_DATE('09/02/2019','MM/DD/YYYY'),1);
+insert into Operator values (506,'George','Washington','Gwash@pres.org','4432138950',TO_TIMESTAMP('09:04:43','HH:MI:SS'),TO_TIMESTAMP('03:54:43','HH:MI:SS'),24,TO_DATE('05/03/2015','MM/DD/YYYY'),1);
+insert into Operator values (607,'Abe','Lincoln','HonestAbe@hotmail.com','8132140989',TO_TIMESTAMP('08:03:54','HH:MI:SS'),TO_TIMESTAMP('05:00:12','HH:MI:SS'),52,TO_DATE('03/05/2016','MM/DD/YYYY'),1);
+insert into Operator values (809,'Ray','Charles','RCharles@yahoo.com','9045122014',TO_TIMESTAMP('08:10:17','HH:MI:SS'),TO_TIMESTAMP('05:12:45','HH:MI:SS'),27,TO_DATE('01/14/2019','MM/DD/YYYY'),1)
+
+
+create table Retailer
+(
+RetailerID INT null primary key,
+Retname varchar(20),
+contactone varchar(20),
+contacttwo varchar(20),
+TopBoxLimit INT,
+Addressone varchar(30),
+Addresstwo varchar (30),
+PinCodeZipCode INT,
+City varchar(20),
+StateProvince varchar(20),
+ServiceCharges number (7,2),
+RetailerCreationDate DATE,
+InventoryList varchar(20),
+Commissionpercent number,
+CreditLimit number
+)
+
+insert into Retailer values (1029,'Jackson','7412589632','3054458791',5,'121 MLK Drive','30 S Beach Street',44511,'Tampa','FL',206.23,TO_DATE('12/04/2014','MM/DD/YYYY'),'Standard',15,850);
+insert into Retailer values (2034,'Leon','8136596012','8139564121',3,'41 Orient Road','956 Providence Blvd',68955,'Orlando','FL',102.35,TO_DATE('12/13/2017','MM/DD/YYYY'),'HD',10,950);
+insert into Retailer values (8047,'Brad','9045123697','3054121048',4,'180 Acklins Cirlce','41 Gornto lake',33511,'Los Angeles','CA',845.21,TO_DATE('01/07/2015','MM/DD/YYYY'),'/IPTV',20,250);
+insert into Retailer values (6014,'Liam','3130201456','3134587964',2,'22 N Nova Road','2058 SR 60',74211,'Miami','FL',1023.45,TO_DATE('10/24/2018','MM/DD/YYYY'),'HD+',3,850);
+insert into Retailer values (7017,'Perry','3057865421','5124789645',7,'542 US 301 HW','84 Williamson Blvd',63254,'Wichita','KS',421.02,TO_DATE('05/12/2019','MM/DD/YYYY'),'Standard',13,989);
+insert into Retailer values (0096,'Simon','4068745120','1103547820',10,'2055 Liconln Highway','89 W Kennedy Blvd',98785,'Toledo','OH',101.23,TO_DATE('08/24/2018','MM/DD/YYYY'),'HD',11,1098);
+insert into Retailer values (3075,'Tirto','9035412915','6541237845',8,'1426 Compton Street','10 E Fowler Ave',08762,'Portland','OR',32.47,TO_DATE('11/03/2016','MM/DD/YYYY'),'/IPTV',6,150);
+insert into Retailer values (4062,'Marcus','7423654895','7410658457',7,'2012 Lions Club ln','17 Bush Blvd',36112,'Atlanta','GA',956.75,TO_DATE('02/01/2012','MM/DD/YYYY'),'HD+',20,225);
+insert into Retailer values (9097,'Jake','8136203214','5136745121',2,'5123 Boyette Rd','1784 harney Rd',31488,'Dothan','AL',202.57,TO_DATE('06/17/2013','MM/DD/YYYY'),'Standard',10,175);
+insert into Retailer values (5065,'Danny','4105467845','7845214112',1,'74 Rivercrest Dr','6485 Lilac Dr',97855,'Dallas','TX',354.85,TO_DATE('07/23/1999','MM/DD/YYYY'),'Standard',9,1550)
+
+
+create table Customer
+(
+CusID INT not null primary key,
+FName varchar(20),
+LName varchar(20),
+emailID varchar(30),
+phoneNum varchar(20),
+Address1 varchar(50),
+Address2 varchar(50),
+LandMark varchar(20),
+PinCodeZipCode INT not null,
+City varchar(20),
+StateProvince varchar(20),
+CustomerCreationDate DATE,
+RetailerID INT null,
+FOREIGN KEY (RetailerID) references Retailer(RetailerID),
+OpID INT null,
+FOREIGN KEY (OpID) references Operator(OpID)
+)
+
+
+insert into Customer values(80998,'Billy','Bob','Blob@gmail.com','8136562019','102 Loop Dirve','87 Beech Street','Grand Canyon','45178','Las Vegas','Nevada',TO_DATE('08/24/2018','MM/DD/YYYY'),2034,123);
+insert into Customer values(50475,'Bruce','Lee','Blee@yahoo.com','3052134875','500 Kung Fu Ln','14 Fighter Ave','Mount Rushmore','57488','Key Stone','SD',TO_DATE('01/22/2017','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(00234,'Johnny','Bravo','Jbravoman@gmail.com','9047895124','1845 Orient Rd','21 Cartoon Network Rd','Hollywood','33412','Hollywood','CA',TO_DATE('11/05/2015','MM/DD/YYYY'),1029,456);
+insert into Customer values(80866,'Lucy','Brown','Littlelady@hotmail.com','4064571244','458 Castle St','0123 Mario Rd','Statue of Liberty','01244','Manhattan','NY',TO_DATE('08/14/2019','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(11298,'Jimmy','Graham','Jgraham@cheeseheads.com','7451412033','1576 Lambo Field Dr','13045 Aaron Rodgers St','Villa Louis','78455','La Crosse','WI',TO_DATE('03/18/2019','MM/DD/YYYY'),8047,789);
+insert into Customer values(10000,'Floyd','Mayweather','Moneyman@MGM.com','9047146589','10000 Undefeated Rd','85 Bucket St','MGM Grand','89109','Las Vegas','NV',TO_DATE('01/01/2001','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(23230,'Michael','Jordan','Jumpman23@gmail.com','4062302300','0023 Air Jordan St','4756 Chciago Rd','Millenium Park','60602','Chicago','IL',TO_DATE('07/23/2012','MM/DD/YYYY'),6014,101);
+insert into Customer values(06969,'Ron','Jeremy','RJ@yahoo.com','7895412301','4562 Louis St','1215 Peter Rd','Time Square','10036','Manhattan','NY',TO_DATE('09/02/2011','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(21467,'Tiger','Woods','Twoods@nike.com','4067854120','100 PGA Wins Cir','4379 Masters Ln','Augusta National','30904','Augusta','GA',TO_DATE('12/04/2010','MM/DD/YYYY'),7017,203);
+insert into Customer values(77541,'Mason','Washington','Mwash@yahoo.com','6067676000','9657 Causeway Blvd','366 Kings Ave','Glaziers Museum','33511','Tampa','FL',TO_DATE('04/01/2013','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(13645,'Jordyn','Korver','Jkorver@gmail.com','9896541200','5478 John Moore Rd','333 Parsons Ave','Ocean Drive','33139','Miami','FL',TO_DATE('06/08/2018','MM/DD/YYYY'),0096,304);
+insert into Customer values(49780,'Kyle','Love','Klove@hotmail.com','2213656655','555 E Faulkenburg Ave','2222 N US 301 HW','Golden Gate Bridge','94016','San Francisco','CA',TO_DATE('10/30/2017','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(55508,'Jamie','Jones','Jjones@livemusic.com','8887475454','9517 Splash Cir','3696 Handy Ln','San Antonio River','78205','San Antonio','TX',TO_DATE('05/08/2014','MM/DD/YYYY'),3075,405);
+insert into Customer values(44521,'Michael','Bibi','Bibi23@UK.com','5551210365','157 Summerfield Rd','357 N Beach Blvd','Canyonlands','84532','Moab','UT',TO_DATE('02/24/2009','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(99877,'Terry','Rozier','Trozier@theman.org','4441105003','8000 Little St','30021 Big Ave','Freedom Trail','98755','Boston','MA',TO_DATE('11/11/2007','MM/DD/YYYY'),4062,506);
+insert into Customer values(11100,'Trae','Young','Tyoung@hawksball.org','0122154787','9000 Luigi Rd','1444 Mario Ln','Kennedy Space Center','32899','Cocao Beach','FL',TO_DATE('04/13/2018','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(99666,'Bill','Cosby','Bcosby@show.com','0002323365','333 Bloomingdale Ave','55 Peak St','Disney World','33611','Orlando','FL',TO_DATE('01/01/2004','MM/DD/YYYY'),9097,607);
+insert into Customer values(88457,'Rob','Dyrdek','Rdyrdek@skater.org','5411230223','6660 Skate Ave','1111 Dyrdek Way','Georgia Aquarium','30313','Atlanta','GA',TO_DATE('12/12/2014','MM/DD/YYYY'),NULL,NULL);
+insert into Customer values(20333,'Phil','Jackson','Philjack@Knicksball.com','8136665412','200 Lakers Blvd','411 Theo St','Central Park','60144','New York','NY',TO_DATE('03/19/2001','MM/DD/YYYY'),5065,809)
+
+drop table OpLogin
+drop table RetLogin
+drop table CustLogin
+drop table customer;
+drop table operator;
+drop table retailer;
+
+
+create table OpLogin
+(
+Password varchar(20),
+Role varchar(20),
+OpUsername INT,
+FOREIGN KEY (OpUsername) references Operator(OpID)
+)
+
+insert into OpLogin values('default','Operator',123);
+insert into OpLogin values('default','Operator',456);
+insert into OpLogin values('default','Operator',789);
+insert into OpLogin values('default','Operator',101);
+insert into OpLogin values('default','Operator',203);
+insert into OpLogin values('default','Operator',304);
+insert into OpLogin values('default','Operator',405);
+insert into OpLogin values('default','Operator',506);
+insert into OpLogin values('default','Operator',607);
+insert into OpLogin values('default','Operator',809)
+
+create table RetLogin
+(
+Password varchar(20),
+Role varchar(20),
+RetUsername INT ,
+FOREIGN KEY (RetUsername) references Retailer(RetailerID)
+)
+
+insert into RetLogin values('default','Retailer',1029);
+insert into RetLogin values('default','Retailer',2034);
+insert into RetLogin values('default','Retailer',8047);
+insert into RetLogin values('default','Retailer',6014);
+insert into RetLogin values('default','Retailer',7017);
+insert into RetLogin values('default','Retailer',0096);
+insert into RetLogin values('default','Retailer',3075);
+insert into RetLogin values('default','Retailer',4062);
+insert into RetLogin values('default','Retailer',9097);
+insert into RetLogin values('default','Retailer',5065)
+
+
+create table CustLogin
+(
+Password varchar(20),
+Role varchar(20),
+CustUsername INT,
+FOREIGN KEY (CustUsername) references Customer(CusID)
+)
+
+insert into CustLogin values('default','Customer',80998);
+insert into CustLogin values('default','Customer',50475);
+insert into CustLogin values('default','Customer',00234);
+insert into CustLogin values('default','Customer',80866);
+insert into CustLogin values('default','Customer',11298);
+insert into CustLogin values('default','Customer',10000);
+insert into CustLogin values('default','Customer',23230);
+insert into CustLogin values('default','Customer',06969);
+insert into CustLogin values('default','Customer',21467);
+insert into CustLogin values('default','Customer',77541);
+insert into CustLogin values('default','Customer',13645);
+insert into CustLogin values('default','Customer',49780);
+insert into CustLogin values('default','Customer',55508);
+insert into CustLogin values('default','Customer',44521);
+insert into CustLogin values('default','Customer',99877);
+insert into CustLogin values('default','Customer',11100);
+insert into CustLogin values('default','Customer',99666);
+insert into CustLogin values('default','Customer',88457);
+insert into CustLogin values('default','Customer',20333)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
