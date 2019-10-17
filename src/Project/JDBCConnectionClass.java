@@ -21,7 +21,6 @@ public class JDBCConnectionClass {
 	
 	static boolean createOperator(Operator o) throws SQLException, ClassNotFoundException
 	{
-		
 		Class.forName(driverinfo);
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
@@ -38,18 +37,15 @@ public class JDBCConnectionClass {
 	    pst.setDate(9, o.getCreationDate());
 	    pst.setInt(10, o.getActiveCustomers());
 	    
-
 	    try {
 		    pst.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
-	    {
-	    	
+	    {	
 	    	e.printStackTrace();
 	    	return false;
-	    }
-		
+	    }	
 	}
 	
 	
@@ -59,9 +55,10 @@ public class JDBCConnectionClass {
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
 	    String query = "Delete from Operator where OpID = ?";
-	    pst.setInt(1, uniqueId);
 
 	    PreparedStatement pst = con.prepareStatement(query);
+	    pst.setInt(1, uniqueId);
+
 	    
 	    try {
 		    pst.executeUpdate();
@@ -75,6 +72,54 @@ public class JDBCConnectionClass {
 	    }
 		
 	}
+	/*
+	UPDATE table
+	SET column1 = expression1,
+	    column2 = expression2,
+	    ...
+	[WHERE conditions];*/
+	static boolean updateOperator(Operator o) throws SQLException, ClassNotFoundException
+	{
+		Class.forName(driverinfo);
+	    Connection con = DriverManager.getConnection(url, uname, pwd);
+	    
+	    String query = "Update operator SET"
+	    		+ "FName = ?,"
+	    		+ "LName = ?"
+	    		+ "emailID = ?"
+	    		+ "phone# = ?"
+	    		+ "ShftStrt = ?"
+	    		+ "ShftEnd = ?"
+	    		+ "Maximum#ofCustMnged = ?"
+	    		+ "ActiveCus = ?"
+	    		+ "where OpID = ?";
+	    PreparedStatement pst = con.prepareStatement(query);
+	    pst.setString(1, o.getfName());
+	    pst.setString(2, o.getlName());
+	    pst.setString(3, o.getEmail());
+	    pst.setString(4, o.getpNum());
+	    pst.setTimestamp(5, o.getShiftStart());
+	    pst.setTimestamp(6, o.getShiftEnd());
+	    pst.setDate(7, o.getCreationDate());
+	    pst.setInt(8, o.getActiveCustomers());
+	    pst.setInt(9, o.getUniqueId());
+
+	    
+	    try {
+		    pst.executeUpdate();
+		    return true;
+	    }
+	    catch(Exception e)
+	    {
+	    	
+	    	e.printStackTrace();
+	    	return false;
+	    }
+		
+	}
+	
+	
+	
 	// this function will add a retailer into the db. If the retailer is valid, it will call update
 	// inventory using the retailer's primary ID
 	static boolean createRetailer(Retailer retailer) throws SQLException, ClassNotFoundException
@@ -120,9 +165,10 @@ public class JDBCConnectionClass {
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
 	    String query = "Delete from Retailer where RetailerID = ?";
+	    PreparedStatement pst = con.prepareStatement(query);
+
 	    pst.setInt(1, uniqueId);
 
-	    PreparedStatement pst = con.prepareStatement(query);
 	    
 	    try {
 		    pst.executeUpdate();
@@ -187,9 +233,10 @@ public class JDBCConnectionClass {
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
 	    String query = "Delete from Customer where CusID = ?";
+	    PreparedStatement pst = con.prepareStatement(query);
+
 	    pst.setInt(1, uniqueId);
 
-	    PreparedStatement pst = con.prepareStatement(query);
 	    
 	    try {
 		    pst.executeUpdate();
@@ -201,8 +248,8 @@ public class JDBCConnectionClass {
 	    	e.printStackTrace();
 	    	return false;
 	    }
-		
 	}
+	
 	public static ArrayList<Operator> queryOperators() throws SQLException, ClassNotFoundException
 	{
 		Class.forName(driverinfo);
