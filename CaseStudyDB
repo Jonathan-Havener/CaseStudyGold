@@ -104,72 +104,13 @@ drop table operator;
 drop table retailer;
 
 
-create table OpLogin
+create table Login
 (
+Username varchar(20),
 Password varchar(20),
-Role varchar(20),
-OpUsername INT,
-FOREIGN KEY (OpUsername) references Operator(OpID)
+Role varchar(20)
 )
 
-insert into OpLogin values('default','Operator',123);
-insert into OpLogin values('default','Operator',456);
-insert into OpLogin values('default','Operator',789);
-insert into OpLogin values('default','Operator',101);
-insert into OpLogin values('default','Operator',203);
-insert into OpLogin values('default','Operator',304);
-insert into OpLogin values('default','Operator',405);
-insert into OpLogin values('default','Operator',506);
-insert into OpLogin values('default','Operator',607);
-insert into OpLogin values('default','Operator',809)
-
-create table RetLogin
-(
-Password varchar(20),
-Role varchar(20),
-RetUsername INT ,
-FOREIGN KEY (RetUsername) references Retailer(RetailerID)
-)
-
-insert into RetLogin values('default','Retailer',1029);
-insert into RetLogin values('default','Retailer',2034);
-insert into RetLogin values('default','Retailer',8047);
-insert into RetLogin values('default','Retailer',6014);
-insert into RetLogin values('default','Retailer',7017);
-insert into RetLogin values('default','Retailer',0096);
-insert into RetLogin values('default','Retailer',3075);
-insert into RetLogin values('default','Retailer',4062);
-insert into RetLogin values('default','Retailer',9097);
-insert into RetLogin values('default','Retailer',5065)
-
-
-create table CustLogin
-(
-Password varchar(20),
-Role varchar(20),
-CustUsername INT,
-FOREIGN KEY (CustUsername) references Customer(CusID)
-)
-
-insert into CustLogin values('default','Customer',80998);
-insert into CustLogin values('default','Customer',50475);
-insert into CustLogin values('default','Customer',00234);
-insert into CustLogin values('default','Customer',80866);
-insert into CustLogin values('default','Customer',11298);
-insert into CustLogin values('default','Customer',10000);
-insert into CustLogin values('default','Customer',23230);
-insert into CustLogin values('default','Customer',06969);
-insert into CustLogin values('default','Customer',21467);
-insert into CustLogin values('default','Customer',77541);
-insert into CustLogin values('default','Customer',13645);
-insert into CustLogin values('default','Customer',49780);
-insert into CustLogin values('default','Customer',55508);
-insert into CustLogin values('default','Customer',44521);
-insert into CustLogin values('default','Customer',99877);
-insert into CustLogin values('default','Customer',11100);
-insert into CustLogin values('default','Customer',99666);
-insert into CustLogin values('default','Customer',88457);
-insert into CustLogin values('default','Customer',20333)
 
 
 
