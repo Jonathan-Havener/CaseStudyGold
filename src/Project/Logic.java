@@ -52,7 +52,7 @@ public class Logic {
 		
 		// Try to add the information into the database and return false if the operation fails.
 		try {
-			isSuccessful = JDBCConnectionClass.createOpperator(operator);
+			isSuccessful = JDBCConnectionClass.createOperator(operator);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,7 +62,22 @@ public class Logic {
 		
 		return isSuccessful;
 	}
-	
+	static boolean deleteOperator (int uniqueId)
+	{
+		boolean isSuccessful = false;
+		
+		try {
+			isSuccessful = JDBCConnectionClass.deleteOperator(uniqueId);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			// The operation failed!
+			isSuccessful = false;
+		}
+		
+		
+		return isSuccessful;
+	}
 
 	// This function will create a start time and calculate the cost of the inventory assigned to
 	// a retailer and pass it to jdbc to create the retailer

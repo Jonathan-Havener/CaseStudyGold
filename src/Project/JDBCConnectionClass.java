@@ -19,7 +19,7 @@ public class JDBCConnectionClass {
 	static String userpassword="";
 	
 	
-	static boolean createOpperator(Operator o) throws SQLException, ClassNotFoundException
+	static boolean createOperator(Operator o) throws SQLException, ClassNotFoundException
 	{
 		
 		Class.forName(driverinfo);
@@ -52,6 +52,29 @@ public class JDBCConnectionClass {
 		
 	}
 	
+	
+	static boolean deleteOperator(int uniqueId) throws SQLException, ClassNotFoundException
+	{
+		Class.forName(driverinfo);
+	    Connection con = DriverManager.getConnection(url, uname, pwd);
+	    
+	    String query = "Delete from Operator where OpID = ?";
+	    pst.setInt(1, uniqueId);
+
+	    PreparedStatement pst = con.prepareStatement(query);
+	    
+	    try {
+		    pst.executeUpdate();
+		    return true;
+	    }
+	    catch(Exception e)
+	    {
+	    	
+	    	e.printStackTrace();
+	    	return false;
+	    }
+		
+	}
 	// this function will add a retailer into the db. If the retailer is valid, it will call update
 	// inventory using the retailer's primary ID
 	static boolean createRetailer(Retailer retailer) throws SQLException, ClassNotFoundException
@@ -91,6 +114,28 @@ public class JDBCConnectionClass {
 
 	}
 	
+	static boolean deleteRetailer(int uniqueId) throws SQLException, ClassNotFoundException
+	{
+		Class.forName(driverinfo);
+	    Connection con = DriverManager.getConnection(url, uname, pwd);
+	    
+	    String query = "Delete from Retailer where RetailerID = ?";
+	    pst.setInt(1, uniqueId);
+
+	    PreparedStatement pst = con.prepareStatement(query);
+	    
+	    try {
+		    pst.executeUpdate();
+		    return true;
+	    }
+	    catch(Exception e)
+	    {
+	    	
+	    	e.printStackTrace();
+	    	return false;
+	    }
+		
+	}
 	// to be implemented
 	static boolean updateInventory(ArrayList<String> inventory /*, primaryIdOfRetailer*/)
 	{
@@ -135,6 +180,29 @@ public class JDBCConnectionClass {
 
 	}
 
+	
+	static boolean deleteCustomer(int uniqueId) throws SQLException, ClassNotFoundException
+	{
+		Class.forName(driverinfo);
+	    Connection con = DriverManager.getConnection(url, uname, pwd);
+	    
+	    String query = "Delete from Customer where CusID = ?";
+	    pst.setInt(1, uniqueId);
+
+	    PreparedStatement pst = con.prepareStatement(query);
+	    
+	    try {
+		    pst.executeUpdate();
+		    return true;
+	    }
+	    catch(Exception e)
+	    {
+	    	
+	    	e.printStackTrace();
+	    	return false;
+	    }
+		
+	}
 	public static ArrayList<Operator> queryOperators() throws SQLException, ClassNotFoundException
 	{
 		Class.forName(driverinfo);
