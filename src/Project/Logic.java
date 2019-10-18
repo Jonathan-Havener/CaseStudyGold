@@ -78,6 +78,29 @@ public class Logic {
 		
 		return isSuccessful;
 	}
+	static boolean updateOperator(int uniqueId, String fName, String lName, String email, 
+			String pNum, Timestamp shiftStart, Timestamp shiftEnd, int maxCustomers, 
+			java.sql.Date creationDate, int activeCustomers)
+	{
+		boolean isSuccessful = false;
+		
+		Operator o = new Operator(uniqueId, fName, lName, email, 
+			pNum, shiftStart, shiftEnd, maxCustomers, 
+			creationDate, activeCustomers);
+		
+		try {
+			isSuccessful = JDBCConnectionClass.updateOperator(o);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			// The operation failed!
+			isSuccessful = false;
+		}
+		
+		
+		
+		return isSuccessful;
+	}
 
 	// This function will create a start time and calculate the cost of the inventory assigned to
 	// a retailer and pass it to jdbc to create the retailer
