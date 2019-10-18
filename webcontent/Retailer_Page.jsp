@@ -64,6 +64,7 @@ onClick="window.location.href = 'Retailer_Regn.jsp';">
 Create
 </button>
 <br><br>
+<!-- 
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="retailerupdate">
@@ -74,6 +75,7 @@ Update
 </button>
 </form>
 <br><br>
+ -->
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="retailerview">
@@ -84,6 +86,7 @@ View
 </button>
 </form>
 <br><br>
+<!-- 
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="retailerdelete">
@@ -94,6 +97,7 @@ onClick="window.location.href = 'Retailer_View.jsp';">
 Delete
 </button>
 </form>
+ -->
 </div>
 </center>
 </center>

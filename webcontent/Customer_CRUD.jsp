@@ -66,6 +66,7 @@ Create
 </button>
 </form>
 
+<!--
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="customerupdate">
@@ -75,16 +76,18 @@ Create
 Update
 </button>
 </form>
+  -->
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="customerview">
 <button style="font-size:30px;width:40%" class ="btn btn-primary" type="submit" name="view_btn">
 <i class ="fa fa-handshake-o"></i>
-<br>
+<br> 
 View
 </button>
 </form>
 
+<!-- 
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="customerdelete">
@@ -94,6 +97,7 @@ View
 Delete
 </button>
 </form>
+  -->
 </div>
 </center>
 

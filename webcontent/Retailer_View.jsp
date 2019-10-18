@@ -12,16 +12,11 @@
 <body background="C:\Users\user\Desktop\infinity-logo.jpg"  >
 
 <style>
-
 body {
-
    background-color: #0000A0;
    background-repeat: no-repeat;
    background-size: 100% 100%;
-
 }
-
-
 div {
   
    margin-top: 50px;
@@ -29,7 +24,6 @@ div {
    margin-right: 50px;
    margin-left: 50px;
 }
-
 footer{
    position: relative;
    left: 0;
@@ -44,22 +38,18 @@ footer{
   width: 30%;
   height: 40%;
 }
-
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
-
 tr:nth-child(even) {
   background-color: #dddddd;
   color:black;
 }
-
 tr:nth-child(odd) {
     color:white;
 }
-
 </style>
 
 <font color ="white">
@@ -163,6 +153,7 @@ tr:nth-child(odd) {
 			out.write("<td>");
 			out.write("<form name = 'delete' action='MainServlet' method='post'>");
 			out.write("<input type='hidden' name='uniqueID' value="+retailer.getUniqueId()+">");
+			out.write("<input type='hidden' name='register' value='deleteretailer'>");
 			out.write("<button input type='Delete'>Delete</button>");
 			out.write("</form>");
 			out.write("</td>");
@@ -179,7 +170,6 @@ tr:nth-child(odd) {
 	}
 	else
 		out.print("Empty!");
-
 	
 %>
 <br>

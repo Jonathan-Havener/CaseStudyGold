@@ -83,7 +83,7 @@ tr:nth-child(odd) {
 	<th><h4>FIRST NAME</h4></th>
 	<th><h4>LAST NAME</h4></th>
 	<th><h4>EMAIL ID</h4></th>
-	<th><h4>PHONE NUMBER</h4></th>
+	
 	
 	
 	
@@ -112,14 +112,16 @@ tr:nth-child(odd) {
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<form name = 'delete' action='MainServlet' method='post'>");
+			out.write("<input type='hidden' name='register' value='deleteop'>");
 			out.write("<input type='hidden' name='uniqueID' value="+operator.getUniqueId()+">");
-			out.write("<button input type='Delete'>Delete</button>");
+			out.write("<button input type='submit'>Delete</button>");
 			out.write("</form>");
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<form name = 'update' action='MainServlet' method='post'>");
 			out.write("<input type='hidden' name='uniqueID' value="+operator+">");
-			out.write("<button input type='Update'>Update</button>");
+			out.write("<input type='hidden' name='register' value='updateop'>");
+			out.write("<button input type='submit'>Update</button>");
 			out.write("</form>");
 			out.write("</td>");
 			out.write("</tr>");

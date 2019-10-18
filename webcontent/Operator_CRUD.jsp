@@ -66,6 +66,7 @@ Create
 </button>
 </form>
 
+<!-- 
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="operatorupdate">
@@ -75,6 +76,7 @@ Create
 Update
 </button>
 </form>
+ -->
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="operatorview">
@@ -85,6 +87,7 @@ View
 </button>
 </form>
 
+<!-- 
 <br><br>
 <form action="MainServlet" method="post">
 <input type="hidden" name="register" value="operatordelete">
@@ -94,6 +97,7 @@ View
 Delete
 </button>
 </form>
+ -->
 </div>
 </center>
 
