@@ -55,7 +55,7 @@ footer{
 <br><br>
 
 <button style="font-size:30px;width:40%" class ="btn btn-primary" type="button" 
-onClick="window.location.href = 'Customer_Regn.jsp';">
+onClick="window.location.href = 'Customer_CRUD.jsp';">
 <i class ="fa fa-group"></i>
 <br>
 Customer Management
@@ -63,7 +63,7 @@ Customer Management
 <br><br>
 <br><br>
 <button style="font-size:30px;width:40%" class ="btn btn-primary" type="button"
-onClick="window.location.href = 'Retailer_Regn.jsp';">
+onClick="window.location.href = 'Retailer_Page.jsp';">
 <i class ="fa fa-handshake-o"></i>
 <br>
 Retailer Management

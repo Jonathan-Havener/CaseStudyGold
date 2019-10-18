@@ -31,7 +31,7 @@ div {
 }
 
 footer{
-   position: fixed;
+   position: relative;
    left: 0;
    bottom: 0;
    width: 100%;
@@ -57,33 +57,42 @@ footer{
 
 <br><br>
 
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button"
+onClick="window.location.href = 'Retailer_Regn.jsp';">
 <i class ="fa fa-group"></i>
 <br>
 Create
 </button>
 <br><br>
 <br><br>
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button">
+<form action="MainServlet" method="post">
+<input type="hidden" name="register" value="retailerupdate">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="submit" name="update_btn">
 <i class ="fa fa-repeat"></i>
 <br>
 Update
 </button>
+</form>
 <br><br>
 <br><br>
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button">
+<form action="MainServlet" method="post">
+<input type="hidden" name="register" value="retailerview">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="submit" name="view_btn">
 <i class ="fa fa-handshake-o"></i>
 <br>
 View
 </button>
+</form>
 <br><br>
 <br><br>
-<button style="font-size:30px;width:40%" class ="btn btn-primary" type="button">
+<form action="MainServlet" method="post">
+<input type="hidden" name="register" value="retailerdelete">
+<button style="font-size:30px;width:40%" class ="btn btn-primary" type="submit" name="delete_btn" 
+onClick="window.location.href = 'Retailer_View.jsp';">
 <i class ="fa fa-user-circle"></i>
 <br>
 Delete
 </button>
-
 </form>
 </div>
 </center>

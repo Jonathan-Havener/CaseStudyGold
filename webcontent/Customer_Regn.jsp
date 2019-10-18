@@ -209,6 +209,7 @@ div {
 
 <button type="submit" >SUBMIT</button>
 <input type="reset" value="RESET" ><br><br>
+<p id="demo"></p>
 </form>
 </div>
 </center>

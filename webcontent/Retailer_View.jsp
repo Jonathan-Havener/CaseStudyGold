@@ -80,22 +80,11 @@ tr:nth-child(odd) {
 	<table style="color: white;">
 	<tr>
 	
-	<th><h2> UNIQUE ID</h2></th>
-	<th><h2>NAME</h2></th>
-	<th><h2>ADDRESS 1</h2></th>
-	<th><h2>ADDRESS 2</h2></th>
-	<th><h2>CITY</h2></th>
-	<th><h2>STATE</h2></th>
-	<th><h2>PHONE NUMBER 1</h2></th>
-	<th><h2>PHONE NUMBER 2</h2></th>
-	<th><h2>ZIP</h2></th>
-	<th><h2>TOP LIMIT </h2></th>
-	<th><h2>CREDIT LIMIT</h2></th>
-	<th><h2>COMMISION PERCENT</h2></th>
-	<th><h2>SERICE CHARGE</h2></th>
-	<th><h2>INVENTORY COST</h2></th>
-	<th><h2>INVENTORY LIST</h2></th>
-	<th><h2>CREATION DATE</h2></th>
+	<th><h2>FIRST NAME</h2></th>
+	<th><h2>LAST NAME</h2></th>
+	<th><h2>EMAIL ID</h2></th>
+	
+	
 	
 	
 	</tr>
@@ -105,10 +94,11 @@ tr:nth-child(odd) {
 		{
 			out.write("<tr><td>");
 			out.write("<h3>");
-			out.write(retailer.getUniqueId());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
+			if(retailer.getName().isEmpty())
+			{
+				out.write("Empty name");
+			}
+			else
 			out.write(retailer.getName());
 			out.write("</h3>");
 			out.write("</td><td>");
@@ -119,60 +109,26 @@ tr:nth-child(odd) {
 			out.write("<h3>");
 			out.write(retailer.getAdd2());
 			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write(retailer.getCity());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write(retailer.getState());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write(retailer.getP1());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write(retailer.getP2());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write(retailer.getZip());
-			out.write("</h3>");
-			out.write("</td><td>");
+			out.write("</td>");
+			out.write("<td>");
 			out.write("<h3>");
 			out.write(retailer.getTopLimit());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write((int)retailer.getCreditLimit());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write((int)retailer.getCommisionPercent());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write((int)retailer.getServiceCharge());
-			out.write("</h3>");
-			out.write("</td><td>");
-			out.write("<h3>");
-			out.write((int)retailer.getInventoryCost());
 			out.write("</h3>");
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<form name = 'delete' action='MainServlet' method='post'>");
+			out.write("<input type='hidden' name='register' value='deleteretailer'>");
 			out.write("<input type='hidden' name='uniqueID' value="+retailer.getUniqueId()+">");
-			out.write("<button input type='Delete'>Delete</button>");
+			out.write("<button input type='submit'>Delete</button>");
 			out.write("</form>");
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<form name = 'update' action='MainServlet' method='post'>");
 			out.write("<input type='hidden' name='uniqueID' value="+retailer+">");
-			out.write("<button input type='Update'>Update</button>");
+			out.write("<input type='hidden' name='register' value='updateretailer'>");
+			out.write("<button input type='submit'>Update</button>");
 			out.write("</form>");
 			out.write("</td>");
-			
 			out.write("</tr>");
 			
 		}

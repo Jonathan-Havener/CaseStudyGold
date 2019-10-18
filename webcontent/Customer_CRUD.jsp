@@ -41,7 +41,7 @@ footer{
 </style>
 
 <font color ="white">
-<h1>Welcome, Admin</h1>
+<h1>Welcome, Operator</h1>
 </font>
 <form align="right" name="form1" method="post" action="LoginPage-US1.jsp"style ="float : right">
 <label class="logoutLblPos">
@@ -51,7 +51,7 @@ footer{
 <center>
 
 <font color ="white">
-<h1>OPERATOR CRUD</h1>
+<h1>CUSTOMER CRUD</h1>
 </font>
 
 <div>
@@ -59,7 +59,7 @@ footer{
 <br>
 <form action="MainServlet" method="post">
 <button style="font-size:30px;width:40%" class ="btn btn-primary" type="button" name="create_btn"
-onClick="window.location.href = 'Operator_Regn.jsp';">
+onClick="window.location.href = 'Customer_Regn.jsp';">
 <i class ="fa fa-group"></i>
 <br>
 Create
@@ -68,7 +68,7 @@ Create
 
 <br><br>
 <form action="MainServlet" method="post">
-<input type="hidden" name="register" value="operatorupdate">
+<input type="hidden" name="register" value="customerupdate">
 <button style="font-size:30px;width:40%" class ="btn btn-primary" type="submit" name="update_btn">
 <i class ="fa fa-repeat"></i>
 <br>
@@ -77,7 +77,7 @@ Update
 </form>
 <br><br>
 <form action="MainServlet" method="post">
-<input type="hidden" name="register" value="operatorview">
+<input type="hidden" name="register" value="customerview">
 <button style="font-size:30px;width:40%" class ="btn btn-primary" type="submit" name="view_btn">
 <i class ="fa fa-handshake-o"></i>
 <br>
@@ -87,7 +87,7 @@ View
 
 <br><br>
 <form action="MainServlet" method="post">
-<input type="hidden" name="register" value="operatordelete">
+<input type="hidden" name="register" value="customerdelete">
 <button style="font-size:30px;width:40%" class ="btn btn-primary" type="submit" name="delete_btn">
 <i class ="fa fa-user-circle"></i>
 <br>

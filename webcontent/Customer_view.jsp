@@ -12,16 +12,11 @@
 <body background="C:\Users\user\Desktop\infinity-logo.jpg"  >
 
 <style>
-
 body {
-
    background-color: #0000A0;
    background-repeat: no-repeat;
    background-size: 100% 100%;
-
 }
-
-
 div {
   
    margin-top: 50px;
@@ -29,7 +24,6 @@ div {
    margin-right: 50px;
    margin-left: 50px;
 }
-
 footer{
    position: relative;
    left: 0;
@@ -44,22 +38,18 @@ footer{
   width: 30%;
   height: 40%;
 }
-
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
-
 tr:nth-child(even) {
   background-color: #dddddd;
   color:black;
 }
-
 tr:nth-child(odd) {
     color:white;
 }
-
 </style>
 
 <font color ="white">
@@ -70,67 +60,122 @@ tr:nth-child(odd) {
 
 <body>
 <%@ page import= "java.util.*"%>
-<%@ page import= "Project.Operator"%>
+<%@ page import= "Project.Customer"%>
 <%@ page import= "Project.Logic"%>
 
 <font color="white"><h1>Information</h1></font>
 <%
-	List<Operator> operators = Logic.findOperators();
+	List<Customer> customers = Logic.findCustomers();
 	%>
 	<table style="color: white;">
 	<tr>
-	
+	<th><h2> UNIQUE ID</h2></th>
 	<th><h2>FIRST NAME</h2></th>
 	<th><h2>LAST NAME</h2></th>
 	<th><h2>EMAIL ID</h2></th>
+	<th><h2>ADDRESS 1</h2></th>
+	<th><h2>ADDRESS 2</h2></th>
+	<th><h2>LANDMARK</h2></th>
+	<th><h2>CITY</h2></th>
+	<th><h2>STATE</h2></th>
+	<th><h2>OPERATOR</h2></th>
+	<th><h2>RETAILER</h2></th>
+	<th><h2>PHONE NUMBER</h2></th>
+	<th><h2>ZIP</h2></th>
+
 	
+
 	
 	
 	
 	</tr>
 	<%
-	if(operators!=null){
-		for(Operator operator: operators)
+	if(customers!=null){
+		for(Customer customer: customers)
 		{
 			out.write("<tr><td>");
 			out.write("<h3>");
-			out.write(operator.getfName());
+			out.write(Integer.toString(customer.getUniqueId()));
 			out.write("</h3>");
 			out.write("</td><td>");
 			out.write("<h3>");
-			out.write(operator.getlName());
+			out.write(customer.getfName());
 			out.write("</h3>");
 			out.write("</td><td>");
 			out.write("<h3>");
-			out.write(operator.getEmail());
+			out.write(customer.getlName());
 			out.write("</h3>");
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<h3>");
-			out.write(operator.getpNum());
+			out.write(customer.getEmail());
 			out.write("</h3>");
 			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(customer.getAdd1());
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(customer.getAdd2());
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(customer.getLandMark());
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(customer.getCity());
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(customer.getState());
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(Integer.toString(customer.getOperator()));
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(Integer.toString(customer.getRetailer()));
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(customer.getP1());
+			out.write("</h3>");
+			out.write("</td>");
+			out.write("<td>");
+			out.write("<h3>");
+			out.write(Integer.toString(customer.getZip()));
+			out.write("</h3>");
+			out.write("</td>");
+			
+			
 			out.write("<td>");
 			out.write("<form name = 'delete' action='MainServlet' method='post'>");
-			out.write("<input type='hidden' name='register' value='deleteop'>");
-			out.write("<input type='hidden' name='uniqueID' value="+operator.getUniqueId()+">");
-			out.write("<button input type='submit'>Delete</button>");
+			out.write("<input type='hidden' name='uniqueID' value="+customer.getUniqueId()+">");
+			out.write("<input type='hidden' name='register' value='deletecustomer'>");
+			out.write("<button input type='Delete'>Delete</button>");
 			out.write("</form>");
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<form name = 'update' action='MainServlet' method='post'>");
-			out.write("<input type='hidden' name='uniqueID' value="+operator+">");
-			out.write("<input type='hidden' name='register' value='updateop'>");
-			out.write("<button input type='submit'>Update</button>");
+			out.write("<input type='hidden' name='uniqueID' value="+customer+">");
+			out.write("<button input type='Update'>Update</button>");
 			out.write("</form>");
 			out.write("</td>");
 			out.write("</tr>");
-			
 		}
 	}
 	else
 		out.print("Empty!");
-
 	
 %>
 <br>

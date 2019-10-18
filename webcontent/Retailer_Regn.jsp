@@ -184,6 +184,7 @@ div {
 <tr><td><b>Service charges</b></td> <td><input type="text" name ="scharge"></td></tr>
 <tr><td><b>Inventory List</b></td> <td><input type = "text" name ="inventory"></td></tr>
 <tr><td><b>Creation Date</b></td> <td><input type="date" name ="cdate"></td></tr>
+<input type="hidden" name="register" value="retailercreate">
 </table>
 <button type="submit" >SUBMIT</button>
 <input type="reset" value="RESET" ><br><br>

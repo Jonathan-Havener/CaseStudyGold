@@ -136,7 +136,7 @@ div {
 <tr><td><b>Last Name</b></td> <td><input type = "text" name ="lname"></td></tr>
 <tr><td><b>E-mail ID</b></td> <td><input type = "text" name ="email"></td></tr>
 <tr><td><b>Phone Number</b></td> <td><input type ="number" name="phone"></td></tr>
-<tr><td><b>Shift Time Start</b></td> <td><select>
+<tr><td><b>Shift Time Start</b></td> <td><select id="starttime" onChange="change()">
   <option value= " "> </option>
   <option value="8">8 am</option>
   <option value="9">9 am</option>
@@ -149,12 +149,17 @@ div {
 </table>
 
 <input type="hidden" name="register" value="operatorregn">
-
 <button type="submit" >SUBMIT</button>
 <input type="reset" value="RESET" ><br><br>
 </div>
 </center>
-
+<script type="text/javascript">
+function Change() {
+    var e = document.getElementById("starttime");
+    var selOption = e.options[e.selectedIndex].value;
+    document.getElementById("endtime").value = selOption;
+}
+</script>
 </body>
 
 <footer style="color:#FFFFFF;padding:40px;">
