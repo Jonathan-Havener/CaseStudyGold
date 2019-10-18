@@ -12,8 +12,7 @@ public class Operator {
 		
 	}
 	public Operator(int uniqueId, String fName, String lName, String email, 
-			String pNum, Timestamp shiftStart, Timestamp shiftEnd, int maxCustomers, 
-			java.sql.Date creationDate, int activeCustomers)
+			String pNum, Timestamp shiftStart, Timestamp shiftEnd, int maxCustomers, java.sql.Date creationDate, int activeCustomers)
 	{
 		this.uniqueId=uniqueId;
 		this.fName=fName;

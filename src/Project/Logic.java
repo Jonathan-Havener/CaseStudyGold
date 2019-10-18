@@ -7,7 +7,7 @@ import java.util.Collections;
 public class Logic {
 	
 	static ArrayList<Integer> uniqueId = populateArray();
-	
+	static int loginid=0;
 	
 	static ArrayList<Integer> populateArray ()
 	{
@@ -46,13 +46,13 @@ public class Logic {
 		java.sql.Date creationDate = new java.sql.Date(utilDate.getTime());
 		
 		int activeCustomers = 0;
-		
+		loginid=uniqueId.get(0);
 		Operator operator = new Operator(uniqueId.remove(0),fName,lName,email,pNum,shiftStart,
 				shiftEnd, maxCustomers, creationDate, activeCustomers);
 		
 		// Try to add the information into the database and return false if the operation fails.
 		try {
-			isSuccessful = JDBCConnectionClass.createOperator(operator);
+			isSuccessful = JDBCConnectionClass.createOpperator(operator);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,12 +62,29 @@ public class Logic {
 		
 		return isSuccessful;
 	}
+	
 	static boolean deleteOperator (int uniqueId)
 	{
 		boolean isSuccessful = false;
 		
 		try {
 			isSuccessful = JDBCConnectionClass.deleteOperator(uniqueId);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			// The operation failed!
+			isSuccessful = false;
+		}
+		
+		
+		return isSuccessful;
+	}
+	static boolean deleteRetailer (int uniqueId)
+	{
+		boolean isSuccessful = false;
+		
+		try {
+			isSuccessful = JDBCConnectionClass.deleteRetailer(uniqueId);
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,9 +118,9 @@ public class Logic {
 		
 		return isSuccessful;
 	}
-
 	// This function will create a start time and calculate the cost of the inventory assigned to
 	// a retailer and pass it to jdbc to create the retailer
+
 	static boolean addRetailer(String name, String p1, String p2, String add1, String add2, int zip,
 			String city, String state, int topLimit, double creditLimit, double commisionPercent,
 			double serviceCharge /*,ArrayList<String> inventoryList*/ )
@@ -152,6 +169,15 @@ public class Logic {
 	 3.3.8 Retailer Name (To be updated later by Admin/Operator by selection.
 	Once done, Retailer name and contact details both should be visible.)
 	*/
+	/*
+	 3.3.6 Customer Creation Date(auto-filled as current date, non-editable)
+	All the above fields are mandatory.
+	 3.3.7 Operator Name (In case Customer is created by Operator it will be
+	filled automatically. Otherwise by default it will be empty, then Admin can
+	update any Operator's name here by selection.)
+	 3.3.8 Retailer Name (To be updated later by Admin/Operator by selection.
+	Once done, Retailer name and contact details both should be visible.)
+	*/
 	static boolean addCustomer(String fName, String lName, String email, String p1, String add1, 
 			String add2, String landMark, int zip, String city, String state, int operator,
 			int retailer)
@@ -164,12 +190,12 @@ public class Logic {
 		{
 			uniqueId=populateArray();
 		}
-		System.out.println("logic class");
+		//System.out.println("logic class");
 		Customer c = new Customer(uniqueId.remove(0), fName, lName, email, add1, add2, landMark, city,
 				state, operator, retailer, p1, zip, creationDate);
 		
 		try {
-			System.out.println("logic class1");
+			//System.out.println("logic class1");
 			isSuccessful = JDBCConnectionClass.createCustomer(c);
 			// if we're successful, we should assign the inventory in the inventory table to the retailer
 			
@@ -181,11 +207,10 @@ public class Logic {
 		
 		return isSuccessful;
 	}
-	
-	public static ArrayList<Operator> findOperators()
+	public static ArrayList<Retailer> findRetailers()
 	{
 		try {
-			return JDBCConnectionClass.queryOperators();
+			return JDBCConnectionClass.queryRetailers();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -204,10 +229,10 @@ public class Logic {
 		}
 
 	}
-	public static ArrayList<Retailer> findRetailers()
+	public static ArrayList<Operator> findOperators()
 	{
 		try {
-			return JDBCConnectionClass.queryRetailers();
+			return JDBCConnectionClass.queryOperators();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -215,7 +240,23 @@ public class Logic {
 		}
 
 	}
-	static boolean validateUser(String uname,String password) throws ClassNotFoundException, SQLException
+	static boolean deleteCustomer (int uniqueId)
+	{
+		boolean isSuccessful = false;
+		
+		try {
+			isSuccessful = JDBCConnectionClass.deleteCustomer(uniqueId);
+		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			// The operation failed!
+			isSuccessful = false;
+		}
+		
+		
+		return isSuccessful;
+	}
+static boolean validateUser(String uname,String password) throws ClassNotFoundException, SQLException
 	{
 		boolean b=JDBCConnectionClass.selectUsers(uname, password);
 		return b;

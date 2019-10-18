@@ -17,10 +17,12 @@ public class JDBCConnectionClass {
 	static ResultSet rs = null;
 	static String role="";
 	static String userpassword="";
+	static ArrayList<String> opretlist=new ArrayList<String>();
 	
 	
-	static boolean createOperator(Operator o) throws SQLException, ClassNotFoundException
+	static boolean createOpperator(Operator o) throws SQLException, ClassNotFoundException
 	{
+		
 		Class.forName(driverinfo);
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
@@ -37,38 +39,16 @@ public class JDBCConnectionClass {
 	    pst.setDate(9, o.getCreationDate());
 	    pst.setInt(10, o.getActiveCustomers());
 	    
+
 	    try {
 		    pst.executeUpdate();
-		    return true;
-	    }
-	    catch(Exception e)
-	    {	
-	    	e.printStackTrace();
-	    	return false;
-	    }	
-	}
-	
-	
-	static boolean deleteOperator(int uniqueId) throws SQLException, ClassNotFoundException
-	{
-		Class.forName(driverinfo);
-	    Connection con = DriverManager.getConnection(url, uname, pwd);
-	    
-	    String query = "Delete from Operator where OpID = ?";
-	    PreparedStatement pst = con.prepareStatement(query);
-	    pst.setInt(1, uniqueId);
-	    
-	    /*
-	    String query1 = "Delete from Login where Username = ?";
-	    PreparedStatement pst1 = con.prepareStatement(query1);
-	    pst1.setString(1, Integer.toString(uniqueId));
-	    */
-
-
-	    
-	    try {
-		    pst.executeUpdate();
-		    //pst1.executeUpdate();
+		    String insertquery = "Insert into Login values(?,?,?)";
+		    PreparedStatement pst1 = con.prepareStatement(insertquery);
+		    pst1.setInt(1, o.getUniqueId());
+		    System.out.println("insert into login");
+		    pst1.setString(2, "default");
+		    pst1.setString(3, "operator");
+		    pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
@@ -79,12 +59,27 @@ public class JDBCConnectionClass {
 	    }
 		
 	}
-	/*
-	UPDATE table
-	SET column1 = expression1,
-	    column2 = expression2,
-	    ...
-	[WHERE conditions];*/
+	static boolean deleteOperator(int uniqueId) throws SQLException, ClassNotFoundException
+	{
+		Class.forName(driverinfo);
+	    Connection con = DriverManager.getConnection(url, uname, pwd);
+
+	    String query = "Delete from Operator where OpID = ?";
+	    PreparedStatement pst = con.prepareStatement(query);
+	    pst.setInt(1, uniqueId);
+	    try {
+		    pst.executeUpdate();
+		    return true;
+	    }
+	    catch(Exception e)
+	    {
+	    	
+	    	e.printStackTrace();
+	    	return false;
+	    }
+		
+	}
+	
 	static boolean updateOperator(Operator o) throws SQLException, ClassNotFoundException
 	{
 		Class.forName(driverinfo);
@@ -100,7 +95,6 @@ public class JDBCConnectionClass {
 	    		+ "Maximum#ofCustMnged = ?"
 	    		+ "ActiveCus = ?"
 	    		+ "where OpID = ?";
-	    PreparedStatement pst = con.prepareStatement(query);
 	    pst.setString(1, o.getfName());
 	    pst.setString(2, o.getlName());
 	    pst.setString(3, o.getEmail());
@@ -111,6 +105,7 @@ public class JDBCConnectionClass {
 	    pst.setInt(8, o.getActiveCustomers());
 	    pst.setInt(9, o.getUniqueId());
 
+	    PreparedStatement pst = con.prepareStatement(query);
 	    
 	    try {
 		    pst.executeUpdate();
@@ -125,8 +120,6 @@ public class JDBCConnectionClass {
 		
 	}
 	
-	
-	
 	// this function will add a retailer into the db. If the retailer is valid, it will call update
 	// inventory using the retailer's primary ID
 	static boolean createRetailer(Retailer retailer) throws SQLException, ClassNotFoundException
@@ -140,22 +133,31 @@ public class JDBCConnectionClass {
 	    pst.setString(2, retailer.getName());
 	    pst.setString(3, retailer.getP1());
 	    pst.setString(4, retailer.getP2());
-	    pst.setString(5, retailer.getAdd1());
-	    pst.setString(6, retailer.getAdd2());
-	    pst.setInt(7, retailer.getZip());
-	    pst.setString(8, retailer.getCity());
-	    pst.setString(9, retailer.getState());
-	    pst.setInt(10, retailer.getTopLimit());
-	    pst.setDouble(11, retailer.getCreditLimit());
-	    pst.setDouble(12, retailer.getCommisionPercent());
-	    pst.setDouble(13, retailer.getServiceCharge());
+	    pst.setInt(5, retailer.getTopLimit());
+	    pst.setString(6, retailer.getAdd1());
+	    pst.setString(7, retailer.getAdd2());
+	    pst.setInt(8, retailer.getZip());
+	    pst.setString(9, retailer.getCity());
+	    pst.setString(10, retailer.getState());
+	    pst.setDouble(11, retailer.getServiceCharge());
+	    pst.setDate(12, retailer.getCreationDate());
+	    pst.setString(13, "null");
+	    pst.setDouble(14, retailer.getCommisionPercent());
+	    pst.setDouble(15, retailer.getCreditLimit());
 	    // update retail db
-	    pst.setDate(14, retailer.getCreationDate());
-	    pst.setDouble(15, retailer.getInventoryCost());
+	   
+	    //pst.setDouble(16, retailer.getInventoryCost());
 	    
 
 	    try {
 		    pst.executeUpdate();
+		    String insertquery = "Insert into Login values(?,?,?)";
+		    PreparedStatement pst1 = con.prepareStatement(insertquery);
+		    pst1.setInt(1, retailer.getUniqueId());
+		    System.out.println("insert into login");
+		    pst1.setString(2, "default");
+		    pst1.setString(3, "retailer");
+		    pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
@@ -174,18 +176,12 @@ public class JDBCConnectionClass {
 	    
 	    String query = "Delete from Retailer where RetailerID = ?";
 	    PreparedStatement pst = con.prepareStatement(query);
+
 	    pst.setInt(1, uniqueId);
-	    
-	    /*
-	    String query1 = "Delete from Login where Username = ?";
-	    PreparedStatement pst1 = con.prepareStatement(query1);
-	    pst1.setString(1, Integer.toString(uniqueId));
-	    */
 
 	    
 	    try {
 		    pst.executeUpdate();
-		    //pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
@@ -201,7 +197,34 @@ public class JDBCConnectionClass {
 	{
 		return true;
 	}
-	
+	public static ArrayList<Retailer> queryRetailers() throws SQLException, ClassNotFoundException
+	{
+		Class.forName(driverinfo);
+	    Connection con = DriverManager.getConnection(url, uname, pwd);
+	    
+	    String query = "select * from Retailer";
+	    PreparedStatement pst = con.prepareStatement(query);
+	    
+	    ResultSet rs = pst.executeQuery();
+	    ArrayList<Retailer> retailers = new ArrayList<>();
+	    Retailer tempRetailer;
+	    
+	    /*
+	     * public Retailer(int uniqueId, String name, String add1, String add2, String city, String state, String p1, String p2, int zip,
+			int topLimit, double creditLimit, double commisionPercent, double serviceCharge, double inventoryCost,
+			ArrayList<String> inventoryList, Date creationDate) 
+	     */
+	    while(rs.next())
+	    {
+	    	//define Operator using rs.getString(1) starting at 1
+	    	tempRetailer = new Retailer(rs.getInt("RetailerID"), rs.getString("Retname"), rs.getString("Addressone"), rs.getString("Addresstwo"), rs.getString("City"), 
+	    			rs.getString("StateProvince"), rs.getString("contactone"), rs.getString("contacttwo"), rs.getInt("PinCodeZipCode"), rs.getInt("TopBoxLimit"),rs.getDouble("CreditLimit"), rs.getDouble("Commissionpercent"), 
+	    			rs.getDouble("ServiceCharges"),0/*inventory cost not defined in db*/, rs.getDate("RetailerCreationDate"));
+	    	retailers.add(tempRetailer);
+	    }
+		
+		return retailers;
+	}
 	
 	static boolean createCustomer(Customer c) throws SQLException, ClassNotFoundException
 	{
@@ -228,6 +251,13 @@ public class JDBCConnectionClass {
 	    
 	    try {
 		    pst.executeUpdate();
+		    String insertquery = "Insert into Login values(?,?,?)";
+		    PreparedStatement pst1 = con.prepareStatement(insertquery);
+		    pst1.setInt(1, c.getUniqueId());
+		    System.out.println("insert into login");
+		    pst1.setString(2, "default");
+		    pst1.setString(3, "customer");
+		    pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
@@ -239,8 +269,6 @@ public class JDBCConnectionClass {
 
 
 	}
-
-	
 	static boolean deleteCustomer(int uniqueId) throws SQLException, ClassNotFoundException
 	{
 		Class.forName(driverinfo);
@@ -248,18 +276,12 @@ public class JDBCConnectionClass {
 	    
 	    String query = "Delete from Customer where CusID = ?";
 	    PreparedStatement pst = con.prepareStatement(query);
+
 	    pst.setInt(1, uniqueId);
-	    
-	    /*
-	    String query1 = "Delete from Login where Username = ?";
-	    PreparedStatement pst1 = con.prepareStatement(query1);
-	    pst1.setString(1, Integer.toString(uniqueId));
-	    */
 
 	    
 	    try {
 		    pst.executeUpdate();
-		    //pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
@@ -269,7 +291,7 @@ public class JDBCConnectionClass {
 	    	return false;
 	    }
 	}
-	
+
 	public static ArrayList<Operator> queryOperators() throws SQLException, ClassNotFoundException
 	{
 		Class.forName(driverinfo);
@@ -285,7 +307,7 @@ public class JDBCConnectionClass {
 	    while(rs.next())
 	    {
 	    	//define Operator using rs.getString(1) starting at 1
-	    	tempOperator = new Operator(rs.getInt("OpId"),rs.getString("FName"), rs.getString("LName"),
+	    	tempOperator = new Operator(rs.getInt("OpID"),rs.getString("FName"), rs.getString("LName"),
 	    			rs.getString("emailID"), rs.getString("phone#"), rs.getTimestamp("ShftStrt"),
 	    			rs.getTimestamp("ShftEnd"), rs.getInt("Maximum#ofCustMnged"), rs.getDate("CreationDate"),
 	    			rs.getInt("activeCus"));
@@ -322,34 +344,6 @@ public class JDBCConnectionClass {
 		
 		return customers;
 	}
-	public static ArrayList<Retailer> queryRetailers() throws SQLException, ClassNotFoundException
-	{
-		Class.forName(driverinfo);
-	    Connection con = DriverManager.getConnection(url, uname, pwd);
-	    
-	    String query = "select * from Retailer";
-	    PreparedStatement pst = con.prepareStatement(query);
-	    
-	    ResultSet rs = pst.executeQuery();
-	    ArrayList<Retailer> retailers = new ArrayList<>();
-	    Retailer tempRetailer;
-	    
-	    /*
-	     * public Retailer(int uniqueId, String name, String add1, String add2, String city, String state, String p1, String p2, int zip,
-			int topLimit, double creditLimit, double commisionPercent, double serviceCharge, double inventoryCost,
-			ArrayList<String> inventoryList, Date creationDate) 
-	     */
-	    while(rs.next())
-	    {
-	    	//define Operator using rs.getString(1) starting at 1
-	    	tempRetailer = new Retailer(rs.getInt("RetailerID"), rs.getString("Retname"), rs.getString("Addressone"), rs.getString("Addresstwo"), rs.getString("City"), 
-	    			rs.getString("StateProvince"), rs.getString("contactone"), rs.getString("contacttwo"), rs.getInt("PinCodeZipCode"), rs.getInt("TopBoxLimit"),rs.getDouble("CreditLimit"), rs.getDouble("Commissionpercent"), 
-	    			rs.getDouble("ServiceCharges"),0/*inventory cost not defined in db*/, rs.getDate("RetailerCreationDate"));
-	    	retailers.add(tempRetailer);
-	    }
-		
-		return retailers;
-	}
 	static boolean selectUsers(String username,String password) throws SQLException, ClassNotFoundException
 	{
 		
@@ -372,7 +366,29 @@ public class JDBCConnectionClass {
 	 	    con.close();
 	 	    return false;
 	}
-	static boolean ChangePassword(String username,String password) throws SQLException, ClassNotFoundException
+	static void selectRetailerAndOperator(String username) throws SQLException, ClassNotFoundException
+	{
+		
+	    String query = "select o.opid,o.fname,o.lname,r.retname from customer c inner join operator o on o.opid=c.opid \r\n" + 
+	    		"inner join retailer r on r.retailerid=c.retailerid \r\n" + 
+	    		"where c.cusid=?";
+	    Class.forName(driverinfo);
+	    con = DriverManager.getConnection(url, uname, pwd);
+	    pst = con.prepareStatement(query);
+	    pst.setString(1, username);
+	    rs = pst.executeQuery();
+	   while(rs.next())
+	    {
+	    	
+	        //return true;
+	    }
+	    
+	        rs.close();
+	 	    pst.close();
+	 	    con.close();
+	 	    //return false;
+	}
+	 static boolean ChangePassword(String username,String password) throws SQLException, ClassNotFoundException
 	{
 		
 	    String query = "update Login set password=? where username=?";
