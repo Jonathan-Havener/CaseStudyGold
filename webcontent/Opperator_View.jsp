@@ -9,7 +9,7 @@
 
 </head>
 
-<body background="C:\Users\user\Desktop\infinity-logo.jpg"  >
+<body background="infinity-logo.jpeg"  >
 
 <style>
 
@@ -83,7 +83,7 @@ tr:nth-child(odd) {
 	<th><h4>FIRST NAME</h4></th>
 	<th><h4>LAST NAME</h4></th>
 	<th><h4>EMAIL ID</h4></th>
-	
+	<th><h4>PHONE NUMBER</h4></th>
 	
 	
 	

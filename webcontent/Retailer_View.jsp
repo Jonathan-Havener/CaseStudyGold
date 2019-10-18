@@ -9,7 +9,7 @@
 
 </head>
 
-<body background="C:\Users\user\Desktop\infinity-logo.jpg"  >
+<body background="infinity-logo.jpeg"  >
 
 <style>
 body {

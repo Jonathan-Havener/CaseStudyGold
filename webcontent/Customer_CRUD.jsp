@@ -41,7 +41,7 @@ footer{
 </style>
 
 <font color ="white">
-<h1>Welcome, Operator</h1>
+<h1>Welcome</h1>
 </font>
 <form align="right" name="form1" method="post" action="LoginPage-US1.jsp"style ="float : right">
 <label class="logoutLblPos">
