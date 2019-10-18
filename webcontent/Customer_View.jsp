@@ -79,92 +79,89 @@ tr:nth-child(odd) {
 	%>
 	<table style="color: white;">
 	<tr>
-	<th><h2> UNIQUE ID</h2></th>
-	<th><h2>FIRST NAME</h2></th>
-	<th><h2>LAST NAME</h2></th>
-	<th><h2>EMAIL ID</h2></th>
-	<th><h2>ADDRESS 1</h2></th>
-	<th><h2>ADDRESS 2</h2></th>
-	<th><h2>LANDMARK</h2></th>
-	<th><h2>CITY</h2></th>
-	<th><h2>STATE</h2></th>
-	<th><h2>OPERATOR</h2></th>
-	<th><h2>RETAILER</h2></th>
-	<th><h2>PHONE NUMBER</h2></th>
-	<th><h2>ZIP</h2></th>
+	<th><h4>UNIQUE ID</h4></th>
+	<th><h4>FIRST NAME</h4></th>
+	<th><h4>LAST NAME</h4></th>
+	<th><h4>EMAIL ID</h4></th>
+	<th><h4>ADDRESS 1</h4></th>
+	<th><h4>ADDRESS 2</h4></th>
+	<th><h4>LANDMARK</h4></th>
+	<th><h4>CITY</h4></th>
+	<th><h4>STATE</h4></th>
+	<th><h4>OPERATOR</h4></th>
+	<th><h4>RETAILER</h4></th>
+	<th><h4>PHONE NUMBER</h4></th>
+	<th><h4>ZIP</h4></th>
+	<th><h4> </h4></th>
+	<th><h4> </h4></th>
 
-	
-
-	
-	
-	
 	</tr>
 	<%
 	if(customers!=null){
 		for(Customer customer: customers)
 		{
 			out.write("<tr><td>");
-			out.write("<h3>");
-			out.write(customer.getUniqueId());
-			out.write("</h3>");
+			out.write("<h5>");
+			out.write(Integer.toString(customer.getUniqueId()));
+			out.write("</h5>");
 			out.write("</td><td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getfName());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td><td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getlName());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getEmail());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getAdd1());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getAdd2());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getLandMark());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getCity());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getState());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
-			out.write(customer.getOperator());
-			out.write("</h3>");
+			out.write("<h5>");
+			out.write(Integer.toString(customer.getOperator()));
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
-			out.write(customer.getRetailer());
-			out.write("</h3>");
+			out.write("<h5>");
+			out.write(Integer.toString(customer.getRetailer()));
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(customer.getP1());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
-			out.write(customer.getZip());
-			out.write("</h3>");
+			out.write("<h5>");
+			out.write(Integer.toString(customer.getZip()));
+			out.write("</h5>");
 			out.write("</td>");
 			
 			

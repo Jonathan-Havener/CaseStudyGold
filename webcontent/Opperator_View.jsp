@@ -80,10 +80,10 @@ tr:nth-child(odd) {
 	<table style="color: white;">
 	<tr>
 	
-	<th><h2>FIRST NAME</h2></th>
-	<th><h2>LAST NAME</h2></th>
-	<th><h2>EMAIL ID</h2></th>
-	
+	<th><h4>FIRST NAME</h4></th>
+	<th><h4>LAST NAME</h4></th>
+	<th><h4>EMAIL ID</h4></th>
+	<th><h4>PHONE NUMBER</h4></th>
 	
 	
 	
@@ -93,35 +93,33 @@ tr:nth-child(odd) {
 		for(Operator operator: operators)
 		{
 			out.write("<tr><td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(operator.getfName());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td><td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(operator.getlName());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td><td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(operator.getEmail());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
-			out.write("<h3>");
+			out.write("<h5>");
 			out.write(operator.getpNum());
-			out.write("</h3>");
+			out.write("</h5>");
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<form name = 'delete' action='MainServlet' method='post'>");
-			out.write("<input type='hidden' name='register' value='deleteop'>");
 			out.write("<input type='hidden' name='uniqueID' value="+operator.getUniqueId()+">");
-			out.write("<button input type='submit'>Delete</button>");
+			out.write("<button input type='Delete'>Delete</button>");
 			out.write("</form>");
 			out.write("</td>");
 			out.write("<td>");
 			out.write("<form name = 'update' action='MainServlet' method='post'>");
 			out.write("<input type='hidden' name='uniqueID' value="+operator+">");
-			out.write("<input type='hidden' name='register' value='updateop'>");
-			out.write("<button input type='submit'>Update</button>");
+			out.write("<button input type='Update'>Update</button>");
 			out.write("</form>");
 			out.write("</td>");
 			out.write("</tr>");
