@@ -55,13 +55,20 @@ public class JDBCConnectionClass {
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
 	    String query = "Delete from Operator where OpID = ?";
-
 	    PreparedStatement pst = con.prepareStatement(query);
 	    pst.setInt(1, uniqueId);
+	    
+	    /*
+	    String query1 = "Delete from Login where Username = ?";
+	    PreparedStatement pst1 = con.prepareStatement(query1);
+	    pst1.setString(1, Integer.toString(uniqueId));
+	    */
+
 
 	    
 	    try {
 		    pst.executeUpdate();
+		    //pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
@@ -127,23 +134,24 @@ public class JDBCConnectionClass {
 		Class.forName(driverinfo);
 	    Connection con = DriverManager.getConnection(url, uname, pwd);
 	    
-	    String query = "Insert into retailer values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	    String query = "Insert into retailer values(?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	    PreparedStatement pst = con.prepareStatement(query);
-	    pst.setString(1, retailer.getName());
-	    pst.setString(2, retailer.getP1());
-	    pst.setString(3, retailer.getP2());
-	    pst.setString(4, retailer.getAdd1());
-	    pst.setString(5, retailer.getAdd2());
-	    pst.setInt(6, retailer.getZip());
-	    pst.setString(7, retailer.getCity());
-	    pst.setString(8, retailer.getState());
-	    pst.setInt(9, retailer.getTopLimit());
-	    pst.setDouble(10, retailer.getCreditLimit());
-	    pst.setDouble(11, retailer.getCommisionPercent());
-	    pst.setDouble(12, retailer.getServiceCharge());
+	    pst.setInt(1, retailer.getUniqueId());
+	    pst.setString(2, retailer.getName());
+	    pst.setString(3, retailer.getP1());
+	    pst.setString(4, retailer.getP2());
+	    pst.setString(5, retailer.getAdd1());
+	    pst.setString(6, retailer.getAdd2());
+	    pst.setInt(7, retailer.getZip());
+	    pst.setString(8, retailer.getCity());
+	    pst.setString(9, retailer.getState());
+	    pst.setInt(10, retailer.getTopLimit());
+	    pst.setDouble(11, retailer.getCreditLimit());
+	    pst.setDouble(12, retailer.getCommisionPercent());
+	    pst.setDouble(13, retailer.getServiceCharge());
 	    // update retail db
-	    pst.setDate(13, retailer.getCreationDate());
-	    pst.setDouble(14, retailer.getInventoryCost());
+	    pst.setDate(14, retailer.getCreationDate());
+	    pst.setDouble(15, retailer.getInventoryCost());
 	    
 
 	    try {
@@ -166,12 +174,18 @@ public class JDBCConnectionClass {
 	    
 	    String query = "Delete from Retailer where RetailerID = ?";
 	    PreparedStatement pst = con.prepareStatement(query);
-
 	    pst.setInt(1, uniqueId);
+	    
+	    /*
+	    String query1 = "Delete from Login where Username = ?";
+	    PreparedStatement pst1 = con.prepareStatement(query1);
+	    pst1.setString(1, Integer.toString(uniqueId));
+	    */
 
 	    
 	    try {
 		    pst.executeUpdate();
+		    //pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
@@ -234,12 +248,18 @@ public class JDBCConnectionClass {
 	    
 	    String query = "Delete from Customer where CusID = ?";
 	    PreparedStatement pst = con.prepareStatement(query);
-
 	    pst.setInt(1, uniqueId);
+	    
+	    /*
+	    String query1 = "Delete from Login where Username = ?";
+	    PreparedStatement pst1 = con.prepareStatement(query1);
+	    pst1.setString(1, Integer.toString(uniqueId));
+	    */
 
 	    
 	    try {
 		    pst.executeUpdate();
+		    //pst1.executeUpdate();
 		    return true;
 	    }
 	    catch(Exception e)
